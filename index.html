@@ -9,7 +9,7 @@
   <meta name="keywords" content="Dheeraj Panyam, full-stack developer, backend developer, React, Next.js, TypeScript, Node.js, PostgreSQL, MongoDB, Prisma, Hyderabad, portfolio" />
   <meta name="author" content="Dheeraj Panyam" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#111827" />
+  <meta name="theme-color" content="#ffffff" />
 
   <link rel="canonical" href="https://dheerajp45.github.io/portfolio/" />
 
@@ -36,6 +36,7 @@
     "jobTitle": "Full-Stack Developer",
     "description": "Full-stack developer building web applications with React, Next.js, TypeScript, Node.js, Express, PostgreSQL and MongoDB. Open-source contributor at JetBrains ThinkRail.",
     "email": "mailto:dheerajpanyam45@gmail.com",
+    "telephone": "+91-9966575597",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Hyderabad",
@@ -54,23 +55,48 @@
   }
   </script>
 
-  <!-- React 18 -->
   <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/babel-standalone@6/babel.min.js"></script>
-
-  <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    body { font-family: 'Inter', sans-serif; }
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg: #ffffff;
+      --bg-elevated: #ffffff;
+      --fg: #0a0a0a;
+      --muted: #525252;
+      --dim: #737373;
+      --border: #e5e5e5;
+      --border-light: #d4d4d4;
+      --soft: #f5f5f5;
+      --accent: #0891b2;
+      --accent-dim: rgba(8, 145, 178, 0.08);
+      --green: #15803d;
+      --green-dim: #f0fdf4;
+      --yellow: #a16207;
+      --yellow-dim: #fefce8;
+      --purple: #7c3aed;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+    }
+    .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    .page { position: relative; }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .fade-up { opacity: 0; animation: fadeUp 0.35s ease-out forwards; }
+    .fade-up { opacity: 0; animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
     .d-1 { animation-delay: 0.05s; }
     .d-2 { animation-delay: 0.12s; }
     .d-3 { animation-delay: 0.19s; }
@@ -78,183 +104,611 @@
     .d-5 { animation-delay: 0.33s; }
     .d-6 { animation-delay: 0.40s; }
     .d-7 { animation-delay: 0.47s; }
+    .d-8 { animation-delay: 0.54s; }
 
-    .chip { transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease; }
-    .chip:hover { background-color: #e0e7ff; color: #3730a3; transform: translateY(-1px); }
+    .nav-blur {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+    }
+    .nav-blur.scrolled { border-bottom-color: var(--border); }
 
-    .icon-link { transition: color 0.15s ease; }
-    .icon-link:hover { color: #4f46e5; }
+    .nav-link {
+      color: var(--dim);
+      transition: color 0.15s ease;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .nav-link:hover { color: var(--accent); }
+
+    .chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: var(--soft);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: border-color 0.15s, color 0.15s, background 0.15s, transform 0.15s;
+    }
+    .chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+      transform: translateY(-1px);
+    }
+
+    .card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      border-color: var(--border-light);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--fg);
+      color: #fff;
+      font-weight: 600;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover {
+      background: #262626;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border-light);
+      color: var(--fg);
+      background: #fff;
+      transition: border-color 0.15s, background 0.15s, color 0.15s, transform 0.15s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+      transform: translateY(-1px);
+    }
+
+    .icon-btn {
+      color: var(--dim);
+      transition: color 0.15s, background 0.15s;
+    }
+    .icon-btn:hover { color: var(--fg); background: var(--soft); }
+
+    .terminal {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #f0f0f0;
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .terminal-body {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.75;
+      padding: 20px;
+    }
+    .prompt { color: var(--green); }
+    .cmd { color: var(--fg); }
+    .comment { color: var(--dim); }
+    .str { color: #15803d; }
+    .key { color: var(--purple); }
+    .val { color: var(--accent); }
+    .cursor-blink {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: var(--accent);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .status-live {
+      background: var(--green-dim);
+      color: var(--green);
+      border: 1px solid #bbf7d0;
+    }
+    .status-dev {
+      background: var(--yellow-dim);
+      color: var(--yellow);
+      border: 1px solid #fde68a;
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: #fff;
+      border-bottom: 1px solid transparent;
+    }
+    .mobile-menu.open {
+      max-height: 320px;
+      border-bottom-color: var(--border);
+    }
 
     @media (prefers-reduced-motion: reduce) {
       .fade-up { animation: none; opacity: 1; }
-      .chip, .icon-link { transition: none; }
+      .cursor-blink { animation: none; }
+      .chip, .card, .btn-primary, .btn-ghost, .icon-btn { transition: none; }
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 
-<body class="bg-white text-gray-800 antialiased">
+<body class="antialiased">
   <noscript>
-    <div style="max-width: 720px; margin: 0 auto; padding: 2rem 1rem;">
+    <div style="max-width: 720px; margin: 0 auto; padding: 2rem 1rem; color: #0a0a0a; background: #fff;">
       <h1>Dheeraj Panyam — Full-Stack Developer</h1>
       <p>Full-stack developer in Hyderabad, India. React, Next.js, TypeScript, Node.js, PostgreSQL, MongoDB.</p>
       <p>Email: <a href="mailto:dheerajpanyam45@gmail.com">dheerajpanyam45@gmail.com</a></p>
+      <p>Phone: <a href="tel:+919966575597">+91 9966575597</a></p>
       <p>
         <a href="https://www.linkedin.com/in/dheerajpanyam">LinkedIn</a> ·
         <a href="https://github.com/dheerajp45">GitHub</a>
       </p>
     </div>
   </noscript>
-  <div id="root"></div>
+
+  <div id="root" class="page"></div>
 
   <script type="text/babel">
+    const { useState, useEffect } = React;
+
     const skills = [
-      { category: "Languages", items: ["JavaScript", "TypeScript"] },
-      { category: "Frontend", items: ["React", "Next.js", "HTML", "CSS", "Tailwind CSS"] },
-      { category: "Backend", items: ["Node.js", "Express.js", "REST APIs", "JWT Authentication"] },
-      { category: "Databases & ORM", items: ["MongoDB", "PostgreSQL", "Prisma"] },
-      { category: "Tools", items: ["Git", "GitHub", "Postman", "Vercel"] }
+      { category: "languages", items: ["JavaScript", "TypeScript"] },
+      { category: "frontend", items: ["React", "Next.js", "HTML", "CSS", "Tailwind CSS"] },
+      { category: "backend", items: ["Node.js", "Express.js", "REST APIs", "JWT Auth"] },
+      { category: "databases", items: ["MongoDB", "PostgreSQL", "Prisma"] },
+      { category: "tools", items: ["Git", "GitHub", "Postman", "Vercel"] }
     ];
 
     const projects = [
       {
         title: "Invoice Engine",
-        status: "Under Development",
-        stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS"],
-        desc: "Modern invoice management platform with a scalable full-stack architecture — authentication, invoice management, PDF generation, dashboard analytics and relational data models built with PostgreSQL and Prisma."
+        file: "invoice-engine/",
+        status: "wip",
+        statusLabel: "under development",
+        stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind"],
+        points: [
+          "Modern invoice management platform with scalable full-stack architecture.",
+          "Auth, invoice CRUD, PDF generation, dashboard analytics & DB-driven workflows.",
+          "Relational schemas + Prisma ORM on PostgreSQL."
+        ],
+        github: "https://github.com/dheerajp45"
       },
       {
         title: "GatherSphere",
-        status: "Under Development",
-        stack: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
-        desc: "Full-stack event management platform for event creation, discovery and registrations, with JWT authentication, REST APIs, organizer workflows and scalable MongoDB schemas."
+        file: "gathersphere/",
+        status: "wip",
+        statusLabel: "under development",
+        stack: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
+        points: [
+          "Full-stack event platform for creation, discovery & registrations.",
+          "JWT auth, REST APIs, organizer workflows & participant registration.",
+          "Scalable MongoDB schemas for event management."
+        ],
+        github: "https://github.com/dheerajp45"
       },
       {
-        title: "Focus Photography Client Portal",
-        status: "Freelance · Production",
+        title: "Focus Photography Portal",
+        file: "focus-portal/",
+        status: "live",
+        statusLabel: "production · freelance",
         stack: ["React", "Vite", "AWS S3", "Cloudflare"],
-        desc: "Production client photo delivery platform for a professional photography studio — secure gallery management and cloud-backed client access, with AWS S3 and Cloudflare for media storage and delivery."
+        points: [
+          "Production client photo delivery platform for a photography studio.",
+          "Secure galleries + cloud-backed client access workflows.",
+          "S3 + Cloudflare for media storage & delivery."
+        ],
+        live: true
       }
     ];
 
-    const Icon = ({ path, filled }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+    const openSourcePoints = [
+      'Fixed React UI bug: "Jump to bottom" stayed visible after scroll in chat.',
+      "Refactored scroll tracking — split useRef from reactive useState for correct re-renders.",
+      "Code review with maintainers; PR merged after CHAT_UI.md update."
+    ];
+
+    const navItems = [
+      { id: "about", label: "about" },
+      { id: "skills", label: "skills" },
+      { id: "oss", label: "oss" },
+      { id: "projects", label: "projects" },
+      { id: "edu", label: "edu" },
+      { id: "contact", label: "contact" }
+    ];
+
+    const Icon = ({ path, filled, size = 16 }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24"
         fill={filled ? "currentColor" : "none"} stroke={filled ? "none" : "currentColor"}
-        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+        strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0" aria-hidden="true">
         {path}
       </svg>
     );
 
     const icons = {
       mail: <Icon path={<React.Fragment><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></React.Fragment>} />,
+      phone: <Icon path={<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>} />,
       github: <Icon filled path={<path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.26 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>} />,
       linkedin: <Icon filled path={<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/>} />,
-      pin: <Icon path={<React.Fragment><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></React.Fragment>} />
+      pin: <Icon path={<React.Fragment><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></React.Fragment>} />,
+      external: <Icon size={13} path={<React.Fragment><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></React.Fragment>} />,
+      arrow: <Icon size={14} path={<React.Fragment><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></React.Fragment>} />,
+      menu: <Icon size={20} path={<React.Fragment><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></React.Fragment>} />,
+      close: <Icon size={20} path={<React.Fragment><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></React.Fragment>} />,
+      code: <Icon size={14} path={<React.Fragment><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></React.Fragment>} />,
+      folder: <Icon size={14} path={<React.Fragment><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></React.Fragment>} />
     };
 
-    const Section = ({ title, delay, children }) => (
-      <section className={"mb-14 fade-up " + delay}>
-        <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-gray-400 mb-5">
-          <span className="w-5 h-px bg-indigo-500"></span>{title}
-        </h2>
+    const Section = ({ id, path, title, delay, children }) => (
+      <section id={id} className={"scroll-mt-24 mb-20 sm:mb-24 fade-up " + delay}>
+        <div className="flex items-center gap-3 mb-6 sm:mb-8">
+          <span className="section-label">// {path}</span>
+          <div className="flex-1 h-px" style={{ background: "var(--border)" }}></div>
+          <span className="font-mono text-xs text-gray-600">{title}</span>
+        </div>
         {children}
       </section>
     );
 
-    const Portfolio = () => (
-      <div className="max-w-3xl mx-auto px-6 py-16">
+    const Portfolio = () => {
+      const [menuOpen, setMenuOpen] = useState(false);
+      const [scrolled, setScrolled] = useState(false);
 
-        {/* Header */}
-        <header className="mb-14 fade-up">
-          <h1 className="text-4xl font-bold text-gray-900">Dheeraj Panyam</h1>
-          <p className="text-lg text-indigo-600 font-medium mt-2">Full-Stack Developer</p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2 mt-4 text-sm">
-            <a href="mailto:dheerajpanyam45@gmail.com" className="icon-link flex items-center gap-1.5 text-gray-600">{icons.mail} dheerajpanyam45@gmail.com</a>
-            <a href="https://github.com/dheerajp45" target="_blank" rel="noopener noreferrer" className="icon-link flex items-center gap-1.5 text-gray-600">{icons.github} GitHub</a>
-            <a href="https://www.linkedin.com/in/dheerajpanyam" target="_blank" rel="noopener noreferrer" className="icon-link flex items-center gap-1.5 text-gray-600">{icons.linkedin} LinkedIn</a>
-            <span className="flex items-center gap-1.5 text-gray-500">{icons.pin} Hyderabad, India</span>
-          </div>
-        </header>
+      useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 12);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+      }, []);
 
-        {/* About */}
-        <Section title="About" delay="d-1">
-          <p className="leading-relaxed text-gray-700">
-            Final-year Computer Science (AI &amp; ML) student focused on backend and
-            full-stack development. Experienced building web applications with
-            JavaScript, React, Node.js, Express and MongoDB. Currently building
-            modern applications with Next.js, TypeScript, PostgreSQL and Prisma
-            while actively contributing to open-source software.
-          </p>
-        </Section>
+      return (
+        <div className="min-h-screen">
+          {/* Nav */}
+          <nav className={"fixed top-0 left-0 right-0 z-50 nav-blur " + (scrolled ? "scrolled" : "")}>
+            <div className="max-w-4xl mx-auto px-5 sm:px-6 h-14 flex items-center justify-between">
+              <a href="#top" className="font-mono text-sm font-semibold tracking-tight hover:opacity-80 transition-opacity">
+                <span style={{ color: "var(--accent)" }}>~/</span>dheeraj
+              </a>
 
-        {/* Skills */}
-        <Section title="Skills" delay="d-2">
-          <div className="space-y-3">
-            {skills.map(group => (
-              <div key={group.category} className="flex flex-col sm:flex-row sm:items-baseline">
-                <span className="w-40 flex-shrink-0 text-sm font-medium text-gray-500">{group.category}</span>
-                <div className="flex flex-wrap gap-2 mt-1 sm:mt-0">
-                  {group.items.map(item => (
-                    <span key={item} className="chip text-sm bg-gray-100 text-gray-700 px-2.5 py-0.5 rounded">{item}</span>
-                  ))}
+              <div className="hidden md:flex items-center gap-5">
+                {navItems.map(item => (
+                  <a key={item.id} href={"#" + item.id} className="nav-link">
+                    ./{item.label}
+                  </a>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-1">
+                <a href="https://github.com/dheerajp45" target="_blank" rel="noopener noreferrer"
+                  className="icon-btn p-2 rounded-md" aria-label="GitHub">{icons.github}</a>
+                <a href="https://www.linkedin.com/in/dheerajpanyam" target="_blank" rel="noopener noreferrer"
+                  className="icon-btn p-2 rounded-md" aria-label="LinkedIn">{icons.linkedin}</a>
+                <button type="button" className="md:hidden icon-btn p-2 rounded-md ml-1"
+                  aria-label={menuOpen ? "Close menu" : "Open menu"}
+                  aria-expanded={menuOpen}
+                  onClick={() => setMenuOpen(o => !o)}>
+                  {menuOpen ? icons.close : icons.menu}
+                </button>
+              </div>
+            </div>
+
+            <div className={"md:hidden mobile-menu " + (menuOpen ? "open" : "")}>
+              <div className="max-w-4xl mx-auto px-5 py-3 flex flex-col gap-1">
+                {navItems.map(item => (
+                  <a key={item.id} href={"#" + item.id} onClick={() => setMenuOpen(false)}
+                    className="font-mono py-2.5 text-sm text-gray-500 hover:text-gray-900">
+                    ./{item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </nav>
+
+          <main id="top" className="max-w-4xl mx-auto px-5 sm:px-6 pt-24 sm:pt-28 pb-16">
+
+            {/* Hero — terminal style */}
+            <header className="mb-20 sm:mb-24 fade-up">
+              <div className="terminal">
+                <div className="terminal-bar">
+                  <span className="terminal-dot" style={{ background: "#ff5f56" }}></span>
+                  <span className="terminal-dot" style={{ background: "#ffbd2e" }}></span>
+                  <span className="terminal-dot" style={{ background: "#27c93f" }}></span>
+                  <span className="font-mono text-xs text-gray-500 ml-3">dheeraj@dev — zsh</span>
+                </div>
+                <div className="terminal-body">
+                  <div className="comment">// full-stack developer · hyderabad, india</div>
+                  <div className="mt-3">
+                    <span className="prompt">→</span>{" "}
+                    <span className="cmd">whoami</span>
+                  </div>
+                  <div className="mt-1 text-xl sm:text-3xl font-bold tracking-tight" style={{ color: "var(--fg)" }}>
+                    Dheeraj Panyam
+                  </div>
+                  <div className="mt-4">
+                    <span className="prompt">→</span>{" "}
+                    <span className="cmd">cat role.txt</span>
+                  </div>
+                  <div className="mt-1 text-sm sm:text-base" style={{ color: "var(--muted)" }}>
+                    Backend-leaning full-stack dev. Building with{" "}
+                    <span className="str">React</span>,{" "}
+                    <span className="str">Next.js</span>,{" "}
+                    <span className="str">TypeScript</span>,{" "}
+                    <span className="str">Node</span> &amp; modern DBs.
+                  </div>
+                  <div className="mt-4">
+                    <span className="prompt">→</span>{" "}
+                    <span className="cmd">echo $STACK</span>
+                  </div>
+                  <div className="mt-1 flex flex-wrap gap-2">
+                    {["JS/TS", "React", "Next.js", "Node", "Express", "MongoDB", "Postgres", "Prisma"].map(t => (
+                      <span key={t} className="chip px-2.5 py-0.5 rounded">{t}</span>
+                    ))}
+                  </div>
+                  <div className="mt-4">
+                    <span className="prompt">→</span>{" "}
+                    <span className="cmd">./start.sh</span>
+                    <span className="cursor-blink"></span>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </Section>
 
-        {/* Open Source */}
-        <Section title="Open Source" delay="d-3">
-          <div>
-            <h3 className="font-semibold text-gray-900">
-              JetBrains ThinkRail <span className="font-normal text-gray-500">— Contributor</span>
-            </h3>
-            <ul className="mt-2 space-y-1.5 text-gray-700 text-sm leading-relaxed list-disc list-inside">
-              <li>Fixed a React UI bug where the “Jump to bottom” control stayed visible after scrolling in the chat interface.</li>
-              <li>Refactored scroll tracking by separating <code className="text-xs bg-gray-100 px-1 py-0.5 rounded">useRef</code> from reactive <code className="text-xs bg-gray-100 px-1 py-0.5 rounded">useState</code> for correct re-rendering.</li>
-              <li>Collaborated with maintainers through code review; pull request merged.</li>
-            </ul>
-          </div>
-        </Section>
-
-        {/* Projects */}
-        <Section title="Projects" delay="d-4">
-          <div className="space-y-8">
-            {projects.map(project => (
-              <div key={project.title}>
-                <div className="flex flex-wrap items-baseline gap-x-3">
-                  <h3 className="font-semibold text-gray-900">{project.title}</h3>
-                  <span className={"text-xs px-2 py-0.5 rounded-full " + (project.status.includes("Production") ? "bg-green-50 text-green-700" : "bg-yellow-50 text-yellow-700")}>{project.status}</span>
-                </div>
-                <div className="flex flex-wrap gap-2 mt-1.5">
-                  {project.stack.map(tech => (
-                    <span key={tech} className="chip text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{tech}</span>
-                  ))}
-                </div>
-                <p className="text-sm text-gray-700 leading-relaxed mt-2">{project.desc}</p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href="#projects" className="btn-primary inline-flex items-center gap-2 text-sm px-4 py-2.5 rounded-md">
+                  {icons.folder} view projects
+                </a>
+                <a href="#contact" className="btn-ghost inline-flex items-center gap-2 text-sm px-4 py-2.5 rounded-md">
+                  {icons.code} get in touch
+                </a>
+                <a href="https://github.com/dheerajp45" target="_blank" rel="noopener noreferrer"
+                  className="btn-ghost inline-flex items-center gap-2 text-sm px-4 py-2.5 rounded-md">
+                  {icons.github} github
+                </a>
               </div>
-            ))}
-          </div>
-        </Section>
 
-        {/* Education */}
-        <Section title="Education" delay="d-5">
-          <h3 className="font-semibold text-gray-900">B.Tech — Computer Science (AI &amp; ML) <span className="font-normal text-gray-500">· 2023 – Present</span></h3>
-          <p className="text-sm text-gray-700 mt-1">Marri Laxman Reddy Institute of Technology and Management</p>
-          <p className="text-sm text-gray-500">GPA: 7.63 / 10</p>
-        </Section>
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-mono" style={{ color: "var(--dim)" }}>
+                <a href="mailto:dheerajpanyam45@gmail.com" className="inline-flex items-center gap-1.5 hover:text-gray-900 transition-colors">
+                  {icons.mail} dheerajpanyam45@gmail.com
+                </a>
+                <a href="tel:+919966575597" className="inline-flex items-center gap-1.5 hover:text-gray-900 transition-colors">
+                  {icons.phone} +91 9966575597
+                </a>
+                <span className="inline-flex items-center gap-1.5">{icons.pin} Hyderabad</span>
+              </div>
+            </header>
 
-        {/* Certifications */}
-        <Section title="Certifications" delay="d-6">
-          <p className="text-sm text-gray-700">Google AI Essentials — Coursera</p>
-        </Section>
+            {/* About */}
+            <Section id="about" path="about.md" title="01" delay="d-1">
+              <div className="card rounded-xl p-5 sm:p-6 font-mono text-sm leading-relaxed">
+                <div className="flex gap-4">
+                  <div className="hidden sm:flex flex-col gap-1 text-xs select-none" style={{ color: "#404040" }}>
+                    {[1,2,3,4,5,6].map(n => <span key={n}>{n}</span>)}
+                  </div>
+                  <div style={{ color: "var(--muted)" }}>
+                    <div><span className="key">const</span> <span className="val">about</span> = {"{"}</div>
+                    <div className="pl-4">
+                      <span className="key">role</span>: <span className="str">"Full-Stack Developer"</span>,
+                    </div>
+                    <div className="pl-4">
+                      <span className="key">focus</span>: <span className="str">"backend + full-stack"</span>,
+                    </div>
+                    <div className="pl-4">
+                      <span className="key">status</span>: <span className="str">"final-year CS (AI &amp; ML)"</span>,
+                    </div>
+                    <div className="pl-4">
+                      <span className="key">currently</span>: <span className="str">"Next.js · TS · Postgres · Prisma · OSS"</span>
+                    </div>
+                    <div>{"}"}</div>
+                  </div>
+                </div>
+                <p className="mt-5 text-sm sm:text-base leading-relaxed" style={{ fontFamily: "Space Grotesk, sans-serif", color: "var(--muted)" }}>
+                  Final-year Computer Science (AI &amp; ML) student focused on backend and full-stack development.
+                  Building web apps with JavaScript, React, Node.js, Express and MongoDB — currently shipping with
+                  Next.js, TypeScript, PostgreSQL and Prisma while contributing to open source.
+                </p>
+              </div>
+            </Section>
 
-        {/* Footer */}
-        <footer className="pt-8 border-t border-gray-100 text-sm text-gray-400 fade-up d-7">
-          <p>© 2026 Dheeraj Panyam</p>
-        </footer>
+            {/* Skills */}
+            <Section id="skills" path="skills.json" title="02" delay="d-2">
+              <div className="space-y-4">
+                {skills.map(group => (
+                  <div key={group.category} className="card rounded-lg px-4 py-3 sm:px-5 sm:py-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                    <span className="font-mono text-xs w-28 flex-shrink-0" style={{ color: "var(--accent)" }}>
+                      {group.category}:
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {group.items.map(item => (
+                        <span key={item} className="chip px-2.5 py-1 rounded">{item}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Section>
 
-      </div>
-    );
+            {/* Open Source */}
+            <Section id="oss" path="open-source/" title="03" delay="d-3">
+              <article className="card rounded-xl p-5 sm:p-6">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2 font-mono text-xs mb-2" style={{ color: "var(--dim)" }}>
+                      {icons.folder} contribs / jetbrains
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-semibold">ThinkRail</h3>
+                    <p className="text-sm mt-1" style={{ color: "var(--muted)" }}>Open Source Contributor · PR merged</p>
+                  </div>
+                  <a href="https://github.com/JetBrains/thinkrail" target="_blank" rel="noopener noreferrer"
+                    className="btn-ghost inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-md">
+                    {icons.github} PR #35 {icons.external}
+                  </a>
+                </div>
+                <ul className="mt-5 space-y-2.5">
+                  {openSourcePoints.map((point, i) => (
+                    <li key={i} className="flex gap-3 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+                      <span className="font-mono text-xs mt-0.5 flex-shrink-0" style={{ color: "var(--green)" }}>+</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </Section>
+
+            {/* Projects */}
+            <Section id="projects" path="projects/" title="04" delay="d-4">
+              <div className="space-y-4">
+                {projects.map(project => (
+                  <article key={project.title} className="card rounded-xl p-5 sm:p-6">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 font-mono text-xs mb-2" style={{ color: "var(--dim)" }}>
+                          {icons.folder} {project.file}
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2.5">
+                          <h3 className="text-lg font-semibold">{project.title}</h3>
+                          <span className={"font-mono text-xs px-2 py-0.5 rounded " + (project.status === "live" ? "status-live" : "status-dev")}>
+                            {project.statusLabel}
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap gap-1.5 mt-3">
+                          {project.stack.map(tech => (
+                            <span key={tech} className="font-mono text-xs px-2 py-0.5 rounded"
+                              style={{ background: "var(--soft)", color: "var(--dim)", border: "1px solid var(--border)" }}>
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {project.github && (
+                          <a href={project.github} target="_blank" rel="noopener noreferrer"
+                            className="btn-ghost inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-md">
+                            {icons.github} repo
+                          </a>
+                        )}
+                        {project.live && (
+                          <span className="font-mono text-xs px-3 py-1.5 rounded status-live">live</span>
+                        )}
+                      </div>
+                    </div>
+                    <ul className="mt-4 space-y-2">
+                      {project.points.map((point, i) => (
+                        <li key={i} className="flex gap-3 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+                          <span className="font-mono text-xs mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }}>*</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </Section>
+
+            {/* Education */}
+            <Section id="edu" path="education.md" title="05" delay="d-5">
+              <div className="card rounded-xl p-5 sm:p-6">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="font-mono text-xs mb-2" style={{ color: "var(--accent)" }}>B.Tech · CS (AI &amp; ML)</p>
+                    <h3 className="text-base sm:text-lg font-semibold">Marri Laxman Reddy Institute of Technology and Management</h3>
+                    <p className="text-sm mt-2" style={{ color: "var(--muted)" }}>GPA: 7.63 / 10</p>
+                  </div>
+                  <span className="font-mono text-xs px-2.5 py-1 rounded" style={{ border: "1px solid var(--border)", color: "var(--dim)" }}>
+                    2023 – present
+                  </span>
+                </div>
+              </div>
+
+              <div className="card rounded-xl p-5 sm:p-6 mt-4 flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <p className="font-mono text-xs mb-1" style={{ color: "var(--dim)" }}>certification</p>
+                  <h3 className="font-semibold">Google AI Essentials</h3>
+                  <p className="text-sm mt-0.5" style={{ color: "var(--muted)" }}>Coursera</p>
+                </div>
+                <span className="font-mono text-xs px-2.5 py-1 rounded" style={{ border: "1px solid var(--border)", color: "var(--dim)" }}>
+                  verified
+                </span>
+              </div>
+            </Section>
+
+            {/* Contact */}
+            <Section id="contact" path="contact.sh" title="06" delay="d-6">
+              <div className="terminal">
+                <div className="terminal-bar">
+                  <span className="terminal-dot" style={{ background: "#ff5f56" }}></span>
+                  <span className="terminal-dot" style={{ background: "#ffbd2e" }}></span>
+                  <span className="terminal-dot" style={{ background: "#27c93f" }}></span>
+                  <span className="font-mono text-xs text-gray-500 ml-3">contact.sh</span>
+                </div>
+                <div className="terminal-body">
+                  <div className="comment"># open to roles, freelance &amp; OSS collabs</div>
+                  <div className="mt-3">
+                    <span className="prompt">→</span>{" "}
+                    <span className="cmd">./ping --me</span>
+                  </div>
+                  <p className="mt-3 text-base sm:text-lg font-semibold" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
+                    Let’s ship something.
+                  </p>
+                  <p className="mt-2 text-sm" style={{ color: "var(--muted)", fontFamily: "Space Grotesk, sans-serif" }}>
+                    Reach out for full-stack work, freelance builds, or open-source collaboration.
+                  </p>
+                  <div className="mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
+                    <a href="mailto:dheerajpanyam45@gmail.com"
+                      className="btn-primary inline-flex items-center justify-center gap-2 text-sm px-4 py-2.5 rounded-md">
+                      {icons.mail} email
+                    </a>
+                    <a href="tel:+919966575597"
+                      className="btn-ghost inline-flex items-center justify-center gap-2 text-sm font-mono px-4 py-2.5 rounded-md">
+                      {icons.phone} call
+                    </a>
+                    <a href="https://www.linkedin.com/in/dheerajpanyam" target="_blank" rel="noopener noreferrer"
+                      className="btn-ghost inline-flex items-center justify-center gap-2 text-sm font-mono px-4 py-2.5 rounded-md">
+                      {icons.linkedin} linkedin
+                    </a>
+                    <a href="https://github.com/dheerajp45" target="_blank" rel="noopener noreferrer"
+                      className="btn-ghost inline-flex items-center justify-center gap-2 text-sm font-mono px-4 py-2.5 rounded-md">
+                      {icons.github} github
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Section>
+
+            <footer className="pt-6 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs font-mono fade-up d-7"
+              style={{ borderColor: "var(--border)", color: "var(--dim)" }}>
+              <p>© 2026 Dheeraj Panyam · exit 0</p>
+              <p className="hidden sm:block">built with react · no frameworks harmed</p>
+            </footer>
+          </main>
+        </div>
+      );
+    };
 
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(<Portfolio />);
