@@ -240,6 +240,37 @@
       border: 1px solid #fde68a;
     }
 
+    .open-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px 6px 10px;
+      border-radius: 9999px;
+      background: var(--green-dim);
+      color: var(--green);
+      border: 1px solid #bbf7d0;
+    }
+    .open-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.45);
+      animation: open-pulse 2s ease-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes open-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.45); }
+      70% { box-shadow: 0 0 0 8px rgba(21, 128, 61, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .open-dot { animation: none; }
+    }
+
     .mobile-menu {
       max-height: 0;
       overflow: hidden;
@@ -292,15 +323,16 @@
       {
         title: "Invoice Engine",
         file: "invoice-engine/",
-        status: "wip",
-        statusLabel: "under development",
+        status: "live",
+        statusLabel: "production · live",
         stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind"],
         points: [
           "Modern invoice management platform with scalable full-stack architecture.",
           "Auth, invoice CRUD, PDF generation, dashboard analytics & DB-driven workflows.",
           "Relational schemas + Prisma ORM on PostgreSQL."
         ],
-        github: "https://github.com/dheerajp45"
+        github: "https://github.com/dheerajp45/invoiceengine",
+        live: "https://invoice-engine.app"
       },
       {
         title: "GatherSphere",
@@ -313,20 +345,21 @@
           "JWT auth, REST APIs, organizer workflows & participant registration.",
           "Scalable MongoDB schemas for event management."
         ],
-        github: "https://github.com/dheerajp45"
-      },
+        github: "https://github.com/dheerajp45/gathersphere"
+      }
+    ];
+
+    const freelanceWork = [
       {
-        title: "Focus Photography Portal",
-        file: "focus-portal/",
-        status: "live",
-        statusLabel: "production · freelance",
-        stack: ["React", "Vite", "AWS S3", "Cloudflare"],
+        client: "Focus Photography Studio",
+        role: "Freelance Web Developer",
+        timeline: "Feb 2026 – Mar 2026",
+        live: "https://focusphotography.in",
         points: [
-          "Production client photo delivery platform for a photography studio.",
-          "Secure galleries + cloud-backed client access workflows.",
-          "S3 + Cloudflare for media storage & delivery."
-        ],
-        live: true
+          "Built and deployed a complete SEO-optimized website for a local photography shop — end-to-end from build to deployment.",
+          "Implemented on-site SEO so the studio can rank for local searches.",
+          "Admin panel so the photographer can maintain photos and update site content without developer help."
+        ]
       }
     ];
 
@@ -339,6 +372,7 @@
     const navItems = [
       { id: "about", label: "about" },
       { id: "skills", label: "skills" },
+      { id: "work", label: "work" },
       { id: "oss", label: "oss" },
       { id: "projects", label: "projects" },
       { id: "edu", label: "edu" },
@@ -364,7 +398,8 @@
       menu: <Icon size={20} path={<React.Fragment><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></React.Fragment>} />,
       close: <Icon size={20} path={<React.Fragment><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></React.Fragment>} />,
       code: <Icon size={14} path={<React.Fragment><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></React.Fragment>} />,
-      folder: <Icon size={14} path={<React.Fragment><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></React.Fragment>} />
+      folder: <Icon size={14} path={<React.Fragment><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></React.Fragment>} />,
+      download: <Icon size={14} path={<React.Fragment><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></React.Fragment>} />
     };
 
     const Section = ({ id, path, title, delay, children }) => (
@@ -435,6 +470,12 @@
 
             {/* Hero — terminal style */}
             <header className="mb-20 sm:mb-24 fade-up">
+              <div className="mb-4">
+                <span className="open-pill" title="Open for opportunities">
+                  <span className="open-dot" aria-hidden="true"></span>
+                  Open for internships · full-time · freelance
+                </span>
+              </div>
               <div className="terminal">
                 <div className="terminal-bar">
                   <span className="terminal-dot" style={{ background: "#ff5f56" }}></span>
@@ -482,6 +523,11 @@
               <div className="mt-6 flex flex-wrap gap-3">
                 <a href="#projects" className="btn-primary inline-flex items-center gap-2 text-sm px-4 py-2.5 rounded-md">
                   {icons.folder} view projects
+                </a>
+                <a href="Dheeraj_Panyam_Full_Stack_Developer.pdf"
+                  download="Dheeraj_Panyam_Full_Stack_Developer.pdf"
+                  className="btn-ghost inline-flex items-center gap-2 text-sm px-4 py-2.5 rounded-md">
+                  {icons.download} resume
                 </a>
                 <a href="#contact" className="btn-ghost inline-flex items-center gap-2 text-sm px-4 py-2.5 rounded-md">
                   {icons.code} get in touch
@@ -553,8 +599,49 @@
               </div>
             </Section>
 
+            {/* Freelance Work */}
+            <Section id="work" path="work/" title="03" delay="d-3">
+              <div className="space-y-4">
+                {freelanceWork.map(job => (
+                  <article key={job.client} className="card rounded-xl p-5 sm:p-6">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 font-mono text-xs mb-2" style={{ color: "var(--dim)" }}>
+                          {icons.folder} freelance
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2.5">
+                          <h3 className="text-lg sm:text-xl font-semibold">{job.client}</h3>
+                          <span className="font-mono text-xs px-2 py-0.5 rounded status-live">freelance</span>
+                        </div>
+                        <p className="text-sm mt-1" style={{ color: "var(--muted)" }}>{job.role}</p>
+                      </div>
+                      <div className="flex flex-col sm:items-end gap-2">
+                        <span className="font-mono text-xs px-2.5 py-1 rounded" style={{ border: "1px solid var(--border)", color: "var(--dim)" }}>
+                          {job.timeline}
+                        </span>
+                        {job.live && (
+                          <a href={job.live} target="_blank" rel="noopener noreferrer"
+                            className="btn-ghost inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-md status-live">
+                            live {icons.external}
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                    <ul className="mt-5 space-y-2.5">
+                      {job.points.map((point, i) => (
+                        <li key={i} className="flex gap-3 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+                          <span className="font-mono text-xs mt-0.5 flex-shrink-0" style={{ color: "var(--green)" }}>+</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </Section>
+
             {/* Open Source */}
-            <Section id="oss" path="open-source/" title="03" delay="d-3">
+            <Section id="oss" path="open-source/" title="04" delay="d-4">
               <article className="card rounded-xl p-5 sm:p-6">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
@@ -581,7 +668,7 @@
             </Section>
 
             {/* Projects */}
-            <Section id="projects" path="projects/" title="04" delay="d-4">
+            <Section id="projects" path="projects/" title="05" delay="d-5">
               <div className="space-y-4">
                 {projects.map(project => (
                   <article key={project.title} className="card rounded-xl p-5 sm:p-6">
@@ -613,7 +700,14 @@
                           </a>
                         )}
                         {project.live && (
-                          <span className="font-mono text-xs px-3 py-1.5 rounded status-live">live</span>
+                          typeof project.live === "string" ? (
+                            <a href={project.live} target="_blank" rel="noopener noreferrer"
+                              className="btn-ghost inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-md status-live">
+                              live {icons.external}
+                            </a>
+                          ) : (
+                            <span className="font-mono text-xs px-3 py-1.5 rounded status-live">live</span>
+                          )
                         )}
                       </div>
                     </div>
@@ -631,7 +725,7 @@
             </Section>
 
             {/* Education */}
-            <Section id="edu" path="education.md" title="05" delay="d-5">
+            <Section id="edu" path="education.md" title="06" delay="d-6">
               <div className="card rounded-xl p-5 sm:p-6">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
@@ -645,20 +739,11 @@
                 </div>
               </div>
 
-              <div className="card rounded-xl p-5 sm:p-6 mt-4 flex flex-wrap items-center justify-between gap-3">
-                <div>
-                  <p className="font-mono text-xs mb-1" style={{ color: "var(--dim)" }}>certification</p>
-                  <h3 className="font-semibold">Google AI Essentials</h3>
-                  <p className="text-sm mt-0.5" style={{ color: "var(--muted)" }}>Coursera</p>
-                </div>
-                <span className="font-mono text-xs px-2.5 py-1 rounded" style={{ border: "1px solid var(--border)", color: "var(--dim)" }}>
-                  verified
-                </span>
-              </div>
+
             </Section>
 
             {/* Contact */}
-            <Section id="contact" path="contact.sh" title="06" delay="d-6">
+            <Section id="contact" path="contact.sh" title="07" delay="d-7">
               <div className="terminal">
                 <div className="terminal-bar">
                   <span className="terminal-dot" style={{ background: "#ff5f56" }}></span>
@@ -683,6 +768,11 @@
                       className="btn-primary inline-flex items-center justify-center gap-2 text-sm px-4 py-2.5 rounded-md">
                       {icons.mail} email
                     </a>
+                    <a href="Dheeraj_Panyam_Full_Stack_Developer.pdf"
+                      download="Dheeraj_Panyam_Full_Stack_Developer.pdf"
+                      className="btn-ghost inline-flex items-center justify-center gap-2 text-sm font-mono px-4 py-2.5 rounded-md">
+                      {icons.download} resume
+                    </a>
                     <a href="tel:+919966575597"
                       className="btn-ghost inline-flex items-center justify-center gap-2 text-sm font-mono px-4 py-2.5 rounded-md">
                       {icons.phone} call
@@ -700,10 +790,10 @@
               </div>
             </Section>
 
-            <footer className="pt-6 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs font-mono fade-up d-7"
+            <footer className="pt-6 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs font-mono fade-up d-8"
               style={{ borderColor: "var(--border)", color: "var(--dim)" }}>
               <p>© 2026 Dheeraj Panyam · exit 0</p>
-              <p className="hidden sm:block">built with react · no frameworks harmed</p>
+
             </footer>
           </main>
         </div>
